@@ -45,7 +45,7 @@ public class Main {
         System.out.println("\nAufgabe 3");
         MathematischeOperationen operations = new MathematischeOperationen(130000000, 870000000);
         operations.printZahlen();
-        System.out.println("Sum: ");
+        System.out.println("\nSum: ");
         for (int i = 0; i < operations.berechnungSumme().length; i++)
             System.out.print(operations.berechnungSumme()[i] + " ");
 

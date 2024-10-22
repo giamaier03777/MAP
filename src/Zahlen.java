@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Zahlen {
 
     // Ub 1
+    // gaseste valoarea maxima dintr-o lista de nr. intregi
     public static int findeMax(ArrayList<Integer> zahlen) {
         if (zahlen.isEmpty())
             throw new IllegalArgumentException("Array ist leer");
@@ -17,6 +18,7 @@ public class Zahlen {
     }
 
     // Ub 2
+    // gaseste valoarea minima dintr-o lista de nr. intregi
     public static int findeMin(ArrayList<Integer> zahlen) {
         if (zahlen.isEmpty())
             throw new IllegalArgumentException("Array ist leer");
@@ -31,6 +33,7 @@ public class Zahlen {
     }
 
     // Ub 3
+    // calculeaza suma tuturor elementelor minus cel mai mic element
     public static int findeMaxSummeVonMinusEins(ArrayList<Integer> zahlen) {
         if (zahlen.isEmpty())
             throw new IllegalArgumentException("Array is empty");
@@ -47,6 +50,7 @@ public class Zahlen {
     }
 
     // Ub 4
+    // calculeaza suma tuturor elementelor minus cel mai mare element
     public static int findeMinSummeVonMinusEins(ArrayList<Integer> zahlen) {
         if (zahlen.isEmpty())
             throw new IllegalArgumentException("Array ist leer");

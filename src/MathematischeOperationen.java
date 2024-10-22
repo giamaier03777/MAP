@@ -1,14 +1,15 @@
 public class MathematischeOperationen {
-    public int[] nr1;
-    public int[] nr2;
+    public int[] nr1;   //primul numar
+    public int[] nr2;   //al doilea numar
 
     public MathematischeOperationen(int zahl1, int zahl2) {
 
-        int lange1 = 0;
-        int lange2 = 0;
+        int lange1 = 0; //lungimea primului nr
+        int lange2 = 0; //lungimea nr 2
         int copyZahl1 = zahl1;
         int copyZahl2 = zahl2;
 
+        //calculare lungime nr 1 si 2
         while (copyZahl1 != 0) {
             lange1++;
             copyZahl1 = copyZahl1 / 10;
@@ -18,7 +19,7 @@ public class MathematischeOperationen {
             copyZahl2 = copyZahl2 / 10;
         }
         if (zahl2 == 0) {
-            lange2 = 1;
+            lange2 = 1; //pt ca 0 are o sg cifra
         }
         nr1 = new int[lange1];
         nr2 = new int[lange2];
@@ -44,6 +45,7 @@ public class MathematischeOperationen {
 
     }
 
+    //afisare nr ca array de cifre
     public void printZahlen() {
         System.out.println("Zahl 1:");
         for (int j : nr1) System.out.print(j + " ");
@@ -52,26 +54,27 @@ public class MathematischeOperationen {
         for (int j : nr2) System.out.print(j + " ");
     }
 
+    //calculeaxa suma sumerelor
     public int[] berechnungSumme() {
         if (nr1.length != nr2.length)
             throw new IllegalArgumentException("Numbers must have the same length");
-        int[] ergebnis = new int[nr1.length + 1];
+        int[] ergebnis = new int[nr1.length + 1];   //array pt suma
         int aux = 0;
 
         for (int i = nr1.length - 1; i >= 0; i--) {
-            int zifferZahl1 = nr1[i];
+            int zifferZahl1 = nr1[i];   //cifra curenta
             int zifferZahl2 = nr2[i];
 
-            int sum = zifferZahl1 + zifferZahl2 + aux;
+            int sum = zifferZahl1 + zifferZahl2 + aux; //adunam cifrele
             ergebnis[i + 1] = sum % 10;
-            aux = sum / 10;
+            aux = sum / 10; //pt urm. iteratie
         }
 
         if (aux > 0) {
             ergebnis[0] = aux;
         } else {
-            int[] schlussErgebnis = new int[nr1.length];
-            System.arraycopy(ergebnis, 1, schlussErgebnis, 0, nr1.length);
+            int[] schlussErgebnis = new int[nr1.length];    //fiind prima cifra 0
+            System.arraycopy(ergebnis, 1, schlussErgebnis, 0, nr1.length); //copiem array-ul de la poz[1] care devine [0]
             return schlussErgebnis;
 
         }
@@ -80,6 +83,7 @@ public class MathematischeOperationen {
     }
 
     //    Ub. 2
+    //calculeaza diferenta dintre 2 numere
     public int[] berechneDifferenz() {
         if (nr1.length != nr2.length)
             throw new IllegalArgumentException("Die Zahlen sollen die gleiche Lange haben!");
@@ -100,11 +104,13 @@ public class MathematischeOperationen {
             ergebnis[i] = differenz;
         }
 
+        //eliminam eventuale 0-uri
         int index = 0;
         while (index < ergebnis.length && ergebnis[index] == 0) {
             index++;
         }
 
+        //daca rez = 0, returnam doar cifra 0
         if (index == ergebnis.length) {
             return new int[]{0};
         }
@@ -116,12 +122,14 @@ public class MathematischeOperationen {
     }
 
     //    Ub. 3
+    //inmulteste primul nr cu un nr format dintr-o cifra
     public int[] multiplikation() {
         if (nr2.length != 1)
             throw new IllegalArgumentException("Die zweite Zahl soll eine Ziffer haben!");
         int koeffizient = nr2[0];
         if (koeffizient == 0 || nr1[0] == 0)
-            return new int[]{0};
+            return new int[]{0}; //*0 = 0
+
         int[] ergebnis = new int[nr1.length + 1];
         int aux = 0;
 
@@ -151,6 +159,7 @@ public class MathematischeOperationen {
     }
 
     //    Ub. 4
+    //imparte primul nr cu un nr format dintr-o cifra
     public int[] division() {
         if (nr2[0] == 0)
             throw new ArithmeticException("Man kann durch 0 nicht teilen");
